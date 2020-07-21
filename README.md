@@ -2,7 +2,7 @@
 
 Трёхмерная визуализация структур молекул
 
-#Команда
+# Команда
 
 - Васянович Дмитрий - [Ga1ath](https://github.com/Ga1ath/) (Captain)
 - Анастасия Трощенкова - [CrowleyHell](https://github.com/CrowleyHell) (Developer)
