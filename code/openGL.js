@@ -1,7 +1,7 @@
-var gl;
+let gl, canvas, current_molecula;
 
 const start = () => {
-  var canvas = document.getElementById("glcanvas");
+  canvas = document.getElementById("glcanvas");
 
   gl = initWebGL(canvas);      // инициализация контекста GL
 
@@ -31,4 +31,13 @@ const initWebGL = (canvas) => {
   }
 
   return gl;
+}
+
+// функция вызывается в случае ввода текста в поле для идентификации молекулы
+const getMolecula = () => {
+	let text = document.getElementById("searchbox").value;
+	if (text) {
+		// alert(text)
+		current_molecula = text;
+	}
 }
