@@ -33,6 +33,7 @@ const initWebGL = (canvas) => {
   return gl;
 }
 
+// функция вызывается в случае ввода текста в поле для идентификации молекулы
 const getMolecula = () => {
 	let text = document.getElementById("searchbox").value;
 	if (text) {
