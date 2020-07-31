@@ -8,24 +8,26 @@
 <body onload = "start()">
     <form>
 		<!-- окно для ввода формулы/названия молекулы -->
-        <input type="text" size="50" id="searchbox" border="5" placeholder="search here..." 
+        <input type="text" size="50" id="searchbox" border="5" placeholder="search here..."
 		style="height:2%; width:20%; position:fixed; top:4%; left:39%;"
 		onchange="getMolecula()">
-	    
+
 	    <!-- кнопки для переключения стилей отображения -->
 	    <button id="ball_stick" style="height:3%; width:12%; position:fixed; left:17%; top:9%;"> Ball-and-stick </button>
 	    <button id="spacefill"  style="height:3%; width:12%; position:fixed; left:30%; top:9%;"> Spacefill </button>
 	    <button id="stick"      style="height:3%; width:12%; position:fixed; left:43%; top:9%;"> Stick </button>
 	    <button id="wireframe"  style="height:3%; width:12%; position:fixed; left:56%; top:9%;"> Wireframe </button>
 	    <button id="surface"    style="height:3%; width:12%; position:fixed; left:69%; top:9%;"> Surface </button>
-	    
+
 	    <!-- кнопки переключения режима отображения -->
 	    <button id="view"    style="height:4%; width:14%; position:fixed; left:34%; top:14%;"> View Mode </button>
 	    <button id="compare" style="height:4%; width:14%; position:fixed; right:34%; top:14%;"> Compare Mode </button>
     </form>
-    
+
     <!-- холст для отрисовки молекулы -->
     <canvas id="glcanvas" style="height:70%; width:80%; position:fixed; top:22%; left:10%"></canvas>
     <script type="text/javascript" src="code/openGL.js"></script>
+    <script type="text/javascript" src="code/jsonDown.js"></script>
+    
 </body>
 </html>
