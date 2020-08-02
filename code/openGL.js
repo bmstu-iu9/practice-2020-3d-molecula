@@ -1,4 +1,4 @@
-let gl, canvas, current_molecula;
+let gl, canvas, current_molecula, jsonData;
 
 const start = () => {
   canvas = document.getElementById("glcanvas");
@@ -39,5 +39,36 @@ const getMolecula = () => {
 	if (text) {
 		// alert(text)
 		current_molecula = text;
+    //Обращение к серверу
+    const status = (response) => {
+        if (response.status !== 200) {
+            return Promise.reject(new Error(response.statusText))
+        }
+                    return Promise.resolve(response)
+    }
+    const json = (response) => {
+        return response.json()
+    }
+
+    //создание ссылки
+    let link = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/fastformula/" + current_molecula + "/JSON";
+
+    //увеличение времени ожидания
+    const timeout = (ms, promise) => {
+        return new Promise(function(resolve, reject){
+            setTimeout(function(){
+                reject(new Error("timeout"))
+            }, ms)
+              promise.then(resolve, reject)
+        })
+    }
+
+    //Скачивание по ссылке
+    timeout(50000, fetch(link, {timeout: 500000}).then(status).then(json).
+    then(function (data) {
+        jsonData = data;
+    }).catch(function (error) {
+        alert(error)
+    }));
 	}
 }
