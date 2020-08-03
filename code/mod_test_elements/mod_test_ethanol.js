@@ -6,34 +6,36 @@
 // num: number in periodic table
 // symbol: symbol in periodic table
 // radius: its radius
+// color: its color
 class Atom {
-	constructor(num, symbol, radius) {
+	constructor(num, symbol, radius, color) {
 		this.num = num;
 		this.symbol = symbol;
 		this.radius = radius;
+		this.color = color;
 	}
 }
 
 // This function is like a database. It gets a number of atom in periodic table
 // and returns Atom object with its number, symbol and radius. 
-// Unknown atoms marks as "Dummy", has periodic number = 0 and radius = 100.
+// Unknown atoms marks as "Dummy", has periodic number = 0, radius = 100 and black color.
 const getAtom = (num) => {
-	if (num == 1) {return new Atom(1, "H", 120);}
-	else if (num == 3) {return new Atom(3, "Li", 182);}
-	else if (num == 6) {return new Atom(6, "C", 170);}
-	else if (num == 7) {return new Atom(7, "N", 155);}
-	else if (num == 8) {return new Atom(8, "O", 152);}
-	else if (num == 9) {return new Atom(9, "F", 147);}
-	else if (num == 11) {return new Atom(11, "Na", 227);}
-	else if (num == 12) {return new Atom(12, "Mg", 173);}
-	else if (num == 14) {return new Atom(14, "Si", 210);}
-	else if (num == 15) {return new Atom(15, "P", 180);}
-	else if (num == 16) {return new Atom(16, "S", 180);}
-	else if (num == 17) {return new Atom(17, "Cl", 175);}
-	else if (num == 19) {return new Atom(19, "K", 275);}
-	else if (num == 35) {return new Atom(35, "Br", 185);}
-	else if (num == 53) {return new Atom(53, "I", 198);}
-	else {return new Atom(0, "Dummy", 100);}
+	if (num == 1) {return new Atom(1, "H", 120, 'white');}
+	else if (num == 3) {return new Atom(3, "Li", 182, 'orangered');}
+	else if (num == 6) {return new Atom(6, "C", 170, 'webgray');}
+	else if (num == 7) {return new Atom(7, "N", 155, 'blue');}
+	else if (num == 8) {return new Atom(8, "O", 152, 'red');}
+	else if (num == 9) {return new Atom(9, "F", 147, 'magenta');}
+	else if (num == 11) {return new Atom(11, "Na", 227, 'dodgerblue');}
+	else if (num == 12) {return new Atom(12, "Mg", 173, 'webgreen');}
+	else if (num == 14) {return new Atom(14, "Si", 210, 'goldenrod');}
+	else if (num == 15) {return new Atom(15, "P", 180, 'orange');}
+	else if (num == 16) {return new Atom(16, "S", 180, 'greenyellow');}
+	else if (num == 17) {return new Atom(17, "Cl", 175, 'green');}
+	else if (num == 19) {return new Atom(19, "K", 275, 'deeppink');}
+	else if (num == 35) {return new Atom(35, "Br", 185, 'peru');}
+	else if (num == 53) {return new Atom(53, "I", 198, 'fuchsia');}
+	else {return new Atom(0, "Dummy", 100, 'black');}
 }
 
 // Class AtomCoord contains an Atom object and coordinates of its
