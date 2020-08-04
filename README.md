@@ -4,6 +4,6 @@
 
 # Команда
 
-- Васянович Дмитрий - [Ga1ath](https://github.com/Ga1ath/) (Captain)
+- Дмитрий Васянович - [Ga1ath](https://github.com/Ga1ath/) (Captain)
 - Анастасия Трощенкова - [CrowleyHell](https://github.com/CrowleyHell) (Developer)
-- Хрипач Георгий - [NotThatWay](https://github.com/NotThatWay) (Developer)
+- Георгий Хрипач - [NotThatWay](https://github.com/NotThatWay) (Developer)
