@@ -8,9 +8,11 @@
 <body onload = "start()">
     <form>
 		<!-- окно для ввода формулы/названия молекулы -->
-        <input type="text" size="50" id="searchbox" border="5" placeholder="search here..."
-		style="height:2%; width:20%; position:fixed; top:4%; left:39%;"
-		onchange="getMolecula()">
+        <input type="text" id="searchbox" border="5" placeholder="Type here..."
+		style="height:2%; width:20%; position:fixed; top:4%; left:39%;">
+	<button type="text" id="sumbitSearch" border="5"
+		style="height:2.35%; width:6%; position:fixed; top:4%; left:60%;"
+		onclick="getMolecula(); return false;"> Search </button>    
 
 	    <!-- кнопки для переключения стилей отображения -->
 	    <button id="ball_stick" style="height:3%; width:12%; position:fixed; left:17%; top:9%;"> Ball-and-stick </button>
