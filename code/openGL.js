@@ -1,5 +1,6 @@
 let gl, canvas, current_molecula, jsonData;
 
+
 const start = () => {
   canvas = document.getElementById("glcanvas");
 
@@ -14,6 +15,7 @@ const start = () => {
     gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);      // очистить буфер цвета и буфер глубины.
   }
 }
+
 
 const initWebGL = (canvas) => {
   gl = null;
@@ -33,42 +35,43 @@ const initWebGL = (canvas) => {
   return gl;
 }
 
+
+const getJSON = (url, callback) => {
+	let xhr = new XMLHttpRequest();
+	
+	xhr.timeout = 20000;
+	xhr.open('GET', url, true);
+	xhr.responseType = 'json';
+	// функция, вызывающаяся при ответе сервера на запрос
+	xhr.onload = function() {
+		
+		let status = xhr.status;
+		
+		if (status == 200) {
+			callback(null, xhr.response);
+		} else {
+			callback(status);
+		}
+	};
+	// запрос серверу
+	xhr.send();
+};
+
 // функция вызывается в случае ввода текста в поле для идентификации молекулы
 const getMolecula = () => {
 	let text = document.getElementById("searchbox").value;
 	if (text) {
-		// alert(text)
 		current_molecula = text;
-    //Обращение к серверу
-    const status = (response) => {
-        if (response.status !== 200) {
-            return Promise.reject(new Error(response.statusText))
-        }
-                    return Promise.resolve(response)
-    }
-    const json = (response) => {
-        return response.json()
-    }
+    		//создание ссылки
+    		let link = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/fastformula/" + current_molecula + "/JSON";
 
-    //создание ссылки
-    let link = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/fastformula/" + current_molecula + "/JSON";
-
-    //увеличение времени ожидания
-    const timeout = (ms, promise) => {
-        return new Promise(function(resolve, reject){
-            setTimeout(function(){
-                reject(new Error("timeout"))
-            }, ms)
-              promise.then(resolve, reject)
-        })
-    }
-
-    //Скачивание по ссылке
-    timeout(50000, fetch(link, {timeout: 500000}).then(status).then(json).
-    then(function (data) {
-        jsonData = data;
-    }).catch(function (error) {
-        alert(error)
-    }));
+    		getJSON(link, function(error, data) {
+			if (error != null) {
+				alert(error);
+			} else {
+				jsonData = data;
+				console.log(data);
+			}
+		});
 	}
 }
