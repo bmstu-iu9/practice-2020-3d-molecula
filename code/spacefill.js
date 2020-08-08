@@ -1,4 +1,9 @@
 const drawSpacefill = () => {
+	// очистка сцены перед отрисовкой
+	while(scene.children.length > 0){ 
+		scene.remove(scene.children[0]); 
+	}
+	
 	let count = molecula.bonds.length;
 	// определяем наибольшую z координату молекул для определения оптимального положения камеры
 	let maxZ = -100;
