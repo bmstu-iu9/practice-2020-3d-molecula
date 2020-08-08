@@ -102,4 +102,5 @@ const initThreeJS = () => {
 				break;	
 		}
 	});
+	status.innerHTML = "STATUS: READY FOR MODE SELECTION";
 }

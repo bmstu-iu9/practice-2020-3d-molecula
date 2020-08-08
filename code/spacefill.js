@@ -23,7 +23,7 @@ const drawSpacefill = () => {
 	    scene.add(sphere);
     }
 	// стартовая позиция камеры
-	camera.position.z = maxZ + 2;
+	camera.position.z = maxZ + 4;
 	// исправление бага с размытосью первоначальной отрисовки молекулы
 	window.innerHeight += 1;
 }

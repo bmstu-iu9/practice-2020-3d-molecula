@@ -92,7 +92,7 @@ const drawBallStick = () => {
 	    scene.add(sphere);
     }
 	// стартовая позиция камеры
-	camera.position.z = maxZ + 1;
+	camera.position.z = maxZ + 2;
 	// исправление бага с размытосью первоначальной отрисовки молекулы
 	window.innerHeight += 1;
 }
