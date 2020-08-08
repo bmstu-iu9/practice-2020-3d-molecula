@@ -1,4 +1,4 @@
-let gl, canvas, current_molecula, jsonData;
+let gl, canvas, current_molecula, jsonData, status = document.getElementById("status");
 
 
 const start = () => {
@@ -59,6 +59,7 @@ const getJSON = (url, callback) => {
 
 // функция вызывается в случае ввода текста в поле для идентификации молекулы
 const getMolecula = () => {
+	status.innerHTML = "STATUS: GETTING DATA FROM SERVER";
 	let text = document.getElementById("searchbox").value;
 	if (text) {
 		current_molecula = text;
@@ -70,9 +71,20 @@ const getMolecula = () => {
 				alert(error);
 			} else {
 				jsonData = data;
+				status.innerHTML = "STATUS: PREPARING FOR RENDERING";
 				parseMolecula(jsonData);
 				initThreeJS();
 			}
 		});
 	}
+}
+
+
+// "перезагрузка" страницы
+const resetWindow = () => {
+	while (scene.children.length > 0) { 
+		scene.remove(scene.children[0]); 
+	}
+	document.getElementById("searchbox").value = "";
+	status.innerHTML = "STATUS: WAITING FOR INIT";
 }

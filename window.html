@@ -9,10 +9,12 @@
     <form>
 		<!-- окно для ввода формулы/названия молекулы -->
         <input type="text" id="searchbox" border="5" placeholder="Type here..."
-		style="height:2%; width:20%; position:fixed; top:4%; left:39%;">
-	<button type="text" id="sumbitSearch" border="5"
-		style="height:2.35%; width:6%; position:fixed; top:4%; left:60%;"
-		onclick="getMolecula(); return false;"> Search </button>
+			style="height:2%; width:20%; position:fixed; top:4%; left:39%;">
+		<button type="text" id="sumbitSearch" border="5"
+			style="height:2.35%; width:6%; position:fixed; top:4%; left:60%;"
+			onclick="getMolecula(); return false;"> Search </button>
+		<button type="button" id="reset" style="height:2.35%; width:6%; position:fixed; top:4%; left:32%;"
+			onclick="resetWindow();"> Clear all </button>
 
 	    <!-- кнопки для переключения стилей отображения -->
 	    <button id="ball_stick" style="height:3%; width:12%; position:fixed; left:23%; top:9%;"
@@ -22,12 +24,15 @@
 	    <button id="stick"      style="height:3%; width:12%; position:fixed; left:51%; top:9%;"
 		    onclick="drawMoleculaStick();" type="button"> Stick </button>
 	    <button id="wireframe"  style="height:3%; width:12%; position:fixed; left:65%; top:9%;"
-      onclick="drawWireframe();" type="button"> Wireframe </button>
+	        onclick="drawWireframe();" type="button"> Wireframe </button>
 
 	    <!-- кнопки переключения режима отображения -->
 	    <button id="view"    style="height:4%; width:14%; position:fixed; left:34%; top:14%;"> View Mode </button>
 	    <button id="compare" style="height:4%; width:14%; position:fixed; right:34%; top:14%;"> Compare Mode </button>
     </form>
+    
+    <!-- -->
+    <div id="status" style="height:4%; width:40%; position:fixed; left:42%; top:19%;"> STATUS: WAITING FOR INIT </div>
 
     <!-- холст для отрисовки молекулы -->
     <canvas id="glcanvas" style="height:70%; width:80%; position:fixed; top:22%; left:10%"></canvas>
