@@ -9,6 +9,7 @@ let scene, camera, renderer, width, height, radiusOfBoundCylinder = 0.1, control
 const initThreeJS = () => {
 	// создание сцены, ее настройка
 	scene = new THREE.Scene();
+	scene.background = new THREE.Color(0x000000);
 	width = window.innerWidth * 0.8;
 	height = window.innerHeight * 0.7;
 	camera = new THREE.PerspectiveCamera(90, width / height, 0.001, 25);
@@ -33,7 +34,7 @@ const initThreeJS = () => {
 	render();	
 	
 	// шаг для перемещения
-	let delta = 0.1;
+	let delta = 0.2;
 	// шан для поворота
 	let theta = Math.PI / 36;
 	
