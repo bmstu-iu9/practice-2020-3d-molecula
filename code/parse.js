@@ -20,7 +20,7 @@ class Atom {
 
 
 // This function is like a database. It gets a number of atom in periodic table
-// and returns Atom object with its number, symbol and radius. 
+// and returns Atom object with its number, symbol and radius.
 // Unknown atoms marks as "Dummy", has periodic number = 0, radius = 100 and black color.
 const getAtom = (num) => {
 	if (num == 1) {return new Atom(1, "H", 120, 0xffffff);} // white
@@ -38,14 +38,14 @@ const getAtom = (num) => {
 	else if (num == 19) {return new Atom(19, "K", 275, 0xff1493);} // deeppink
 	else if (num == 35) {return new Atom(35, "Br", 185, 0xcd853f);} // peru
 	else if (num == 53) {return new Atom(53, "I", 198, 0xee82ee);} // violet
-	else {return new Atom(0, "Dummy", 100, 0x000000);} // black
+	else {return new Atom(0, "Dummy", 100, 0x00ffff);} // cyan
 }
 
 // Class AtomCoord contains an Atom object and coordinates of its
 // center in given molecula.
 //
 // atom: Atom object
-// coords: list of 3 float numbers (x, y, z) as coords of the center of atom 
+// coords: list of 3 float numbers (x, y, z) as coords of the center of atom
 class AtomCoord {
 	constructor(atom, coords) {
 		this.atom = atom;
@@ -90,14 +90,14 @@ const parseAtoms = (file) => {
 	for (let i = 0; i < n; i++) {
 		elements[i] = getAtom(elements[i]);
 	}
-		
+
 	let coords = file.PC_Compounds[0].coords[0].conformers[0];
 	for (let i = 0; i < n; i++) {
 		point = [coords.x[i], coords.y[i], coords.z[i]];
 		atomList.push(new AtomCoord(elements[i], point));
-		
+
 	}
-					
+
 	return atomList;
 }
 
@@ -118,12 +118,12 @@ const parseBonds = (file) => {
 
 const parseMolecula = (jsonData) => {
 	//let json_molecula = jsonData.PC_Compounds[0];
-	
+
 	let atomList = parseAtoms(jsonData);  // list of Atom objects
 	let bondList = parseBonds(jsonData);  // list of Bond objects
-	
+
 	molecula = new Molecula(atomList, bondList); // Molecula object
-	// This object will be used to create all necessary information for 
+	// This object will be used to create all necessary information for
 	// graphic representation of the molecula.
 	// console.log(molecula);
 }
