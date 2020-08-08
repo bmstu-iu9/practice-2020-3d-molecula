@@ -17,7 +17,8 @@
 	    <!-- кнопки для переключения стилей отображения -->
 	    <button id="ball_stick" style="height:3%; width:12%; position:fixed; left:17%; top:9%;"> Ball-and-stick </button>
 	    <button id="spacefill"  style="height:3%; width:12%; position:fixed; left:30%; top:9%;"> Spacefill </button>
-	    <button id="stick"      style="height:3%; width:12%; position:fixed; left:43%; top:9%;"> Stick </button>
+	    <button id="stick"      style="height:3%; width:12%; position:fixed; left:43%; top:9%;"
+		    onclick="drawMoleculaStick();" type="button"> Stick </button>
 	    <button id="wireframe"  style="height:3%; width:12%; position:fixed; left:56%; top:9%;"> Wireframe </button>
 	    <button id="surface"    style="height:3%; width:12%; position:fixed; left:69%; top:9%;"> Surface </button>
 
@@ -28,9 +29,13 @@
 
     <!-- холст для отрисовки молекулы -->
     <canvas id="glcanvas" style="height:70%; width:80%; position:fixed; top:22%; left:10%"></canvas>
-    <script type="text/javascript" src="code/openGL.js"></script>
+    <script type="text/javascript" src="code/main.js"></script>
     <script type="text/javascript" src="code/parse.js"></script>
+    <script type="text/javascript" src="code/init.js"></script>
+    <script type="text/javascript" src="code/stick.js"></script>
     
+    <!-- скрипты three.js -->
+    <script type="text/javascript" src="three.js-master/build/three.js"></script>
     
 </body>
 </html>
