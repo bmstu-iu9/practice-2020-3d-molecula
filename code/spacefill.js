@@ -1,10 +1,8 @@
 const drawSpacefill = () => {
 	// очистка сцены перед отрисовкой
-	while(scene.children.length > 0){ 
-		scene.remove(scene.children[0]); 
-	}
-	
-	let count = molecula.bonds.length;
+	clearObject(scene);
+	groupOfAtoms = new THREE.Group();
+
 	// определяем наибольшую z координату молекул для определения оптимального положения камеры
 	let maxZ = -100;
 	
@@ -20,8 +18,10 @@ const drawSpacefill = () => {
 	    let sphereMat = new THREE.MeshBasicMaterial({color: currentAtom.atom.color});
 	    let sphere = new THREE.Mesh(sphereGeom, sphereMat);
 	    sphere.position.set(currentAtom.coords[1], currentAtom.coords[2], currentAtom.coords[0]);
-	    scene.add(sphere);
+	    // scene.add(sphere);
+		groupOfAtoms.add(sphere);
     }
+    scene.add(groupOfAtoms);
 	// стартовая позиция камеры
 	camera.position.z = maxZ + 4;
 	// исправление бага с размытосью первоначальной отрисовки молекулы

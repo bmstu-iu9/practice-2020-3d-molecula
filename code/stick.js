@@ -1,8 +1,7 @@
 const drawMoleculaStick = () => {
 	// очистка сцены перед отрисовкой
-	while(scene.children.length > 0){ 
-		scene.remove(scene.children[0]); 
-	}
+	clearObject(scene);
+	groupOfAtoms = new THREE.Group();
 	
 	let count = molecula.bonds.length;
 	// определяем наибольшую z координату молекул для определения оптимального положения камеры
@@ -37,13 +36,15 @@ const drawMoleculaStick = () => {
 		let cylinder1 = new THREE.Mesh(geometry1, material1);
 		cylinder1.position.set(startAtom.coords[1] + x / 4, startAtom.coords[2] + y / 4, startAtom.coords[0] + z / 4);
 		cylinder1.quaternion.setFromUnitVectors(axis, direction.clone().normalize());
-		scene.add(cylinder1);
+		// scene.add(cylinder1);
+		groupOfAtoms.add(cylinder1);
 		
 		// сфера к первому цилиндру
 		let geometry11 = new THREE.SphereGeometry(radiusOfBoundCylinder, 30, 30);
 		let sphere11 = new THREE.Mesh(geometry11, material1);
 		sphere11.position.set(startAtom.coords[1], startAtom.coords[2], startAtom.coords[0]);
-		scene.add(sphere11);
+		// scene.add(sphere11);
+		groupOfAtoms.add(sphere11);
 		
 		// вторая половинка
 		let geometry2 = new THREE.CylinderGeometry(radiusOfBoundCylinder, radiusOfBoundCylinder, 
@@ -53,14 +54,17 @@ const drawMoleculaStick = () => {
 		cylinder2.position.set(startAtom.coords[1] + x * 0.75, startAtom.coords[2] + y * 0.75, 
 							   startAtom.coords[0] + z * 0.75);
 		cylinder2.quaternion.setFromUnitVectors(axis, direction.clone().normalize());
-		scene.add(cylinder2);
+		// scene.add(cylinder2);
+		groupOfAtoms.add(cylinder2);
 		
 		// сфера ко второму цилиндру
 		let geometry21 = new THREE.SphereGeometry(radiusOfBoundCylinder, 30, 30);
 		let sphere21 = new THREE.Mesh(geometry21, material2);
 		sphere21.position.set(finishAtom.coords[1], finishAtom.coords[2], finishAtom.coords[0]);
-		scene.add(sphere21);
+		// scene.add(sphere21);
+		groupOfAtoms.add(sphere21);
 	}
+	scene.add(groupOfAtoms);
 	// стартовая позиция камеры
 	camera.position.z = maxZ + 2;
 	// исправление бага с размытосью первоначальной отрисовки молекулы

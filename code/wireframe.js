@@ -1,9 +1,9 @@
 const drawWireframe = () => {
-  // очистка сцены перед отрисовкой
-	while(scene.children.length > 0){
-		scene.remove(scene.children[0]);
-	}
-  let count = molecula.bonds.length;
+    // очистка сцены перед отрисовкой
+	clearObject(scene);
+	groupOfAtoms = new THREE.Group();
+
+    let count = molecula.bonds.length;
 	// определяем наибольшую z координату молекул для определения оптимального положения камеры
 	let maxZ = -100;
 	// цикл для отрисовки кадой связи молекулы
@@ -29,7 +29,7 @@ const drawWireframe = () => {
 		let direction = new THREE.Vector3(x, y, z);
 
 //Отрисовка одинарной связи
-    if (currentBond.type == 1){
+    if (currentBond.type === 1){
       //Первая половина соединения
       let geometry1 = new THREE.CylinderGeometry(radiusOfBoundCylinder/50, radiusOfBoundCylinder/50,
                           cylinderHeight / 2, 30);
@@ -37,7 +37,8 @@ const drawWireframe = () => {
      	let cylinder1 = new THREE.Mesh(geometry1, material1);
      	cylinder1.position.set(startAtom.coords[1] + x / 4, startAtom.coords[2] + y / 4, startAtom.coords[0] + z / 4);
      	cylinder1.quaternion.setFromUnitVectors(axis, direction.clone().normalize());
-     	scene.add(cylinder1);
+     	// scene.add(cylinder1);
+		groupOfAtoms.add(cylinder1);
 
       //Вторая половина соединения
       let geometry2 = new THREE.CylinderGeometry(radiusOfBoundCylinder/50, radiusOfBoundCylinder/50,
@@ -47,7 +48,8 @@ const drawWireframe = () => {
   		cylinder2.position.set(startAtom.coords[1] + x * 0.75, startAtom.coords[2] + y * 0.75,
   							   startAtom.coords[0] + z * 0.75);
   		cylinder2.quaternion.setFromUnitVectors(axis, direction.clone().normalize());
-    	scene.add(cylinder2);
+    	// scene.add(cylinder2);
+		groupOfAtoms.add(cylinder2);
 
       //Отрисовка двойной связи
     } else {
@@ -61,8 +63,10 @@ const drawWireframe = () => {
   		cylinder1.quaternion.setFromUnitVectors(axis, direction.clone().normalize());
       cylinder11.position.set(startAtom.coords[1] + (x / 4), startAtom.coords[2] + (y / 4) - 0.01, startAtom.coords[0] + (z / 4));
     	cylinder11.quaternion.setFromUnitVectors(axis, direction.clone().normalize());
-      scene.add(cylinder1);
-      scene.add(cylinder11);
+      // scene.add(cylinder1);
+      // scene.add(cylinder11);
+		groupOfAtoms.add(cylinder1);
+		groupOfAtoms.add(cylinder11);
 
       //Вторая половина соединения
       let geometry2 = new THREE.CylinderGeometry(radiusOfBoundCylinder/70, radiusOfBoundCylinder/70,
@@ -76,8 +80,10 @@ const drawWireframe = () => {
       cylinder22.position.set(startAtom.coords[1] + x * 0.75, startAtom.coords[2] + (y * 0.75) - 0.01,
     						   startAtom.coords[0] + z * 0.75);
     	cylinder22.quaternion.setFromUnitVectors(axis, direction.clone().normalize());
-    	scene.add(cylinder2);
-      scene.add(cylinder22);
+    	// scene.add(cylinder2);
+        // scene.add(cylinder22);
+		groupOfAtoms.add(cylinder2);
+		groupOfAtoms.add(cylinder22);
     }
 
 	}
@@ -88,10 +94,12 @@ const drawWireframe = () => {
 	    let sphereMat = new THREE.MeshBasicMaterial({color: molecula.atoms[i].atom.color});
 	    let sphere = new THREE.Mesh(sphereGeom, sphereMat);
 	    sphere.position.set(molecula.atoms[i].coords[1], molecula.atoms[i].coords[2], molecula.atoms[i].coords[0]);
-	    scene.add(sphere);
+	    // scene.add(sphere);
+		groupOfAtoms.add(sphere);
     }
+	scene.add(groupOfAtoms);
 	// стартовая позиция камеры
-	camera.position.z = maxZ + 1;
+	camera.position.z = maxZ + 2;
 	// исправление бага с размытосью первоначальной отрисовки молекулы
 	window.innerHeight += 1;
 }

@@ -23,21 +23,21 @@ class Atom {
 // and returns Atom object with its number, symbol and radius.
 // Unknown atoms marks as "Dummy", has periodic number = 0, radius = 100 and black color.
 const getAtom = (num) => {
-	if (num == 1) {return new Atom(1, "H", 120, 0xffffff);} // white
-	else if (num == 3) {return new Atom(3, "Li", 182, 0xff4500);} // orangered
-	else if (num == 6) {return new Atom(6, "C", 170, 0x808080);} // webgray
-	else if (num == 7) {return new Atom(7, "N", 155, 0x0000ff);} // blue
-	else if (num == 8) {return new Atom(8, "O", 152, 0xff0000);} // red
-	else if (num == 9) {return new Atom(9, "F", 147, 0xff00ff);} // magenta
-	else if (num == 11) {return new Atom(11, "Na", 227, 0x1e90ff);} // dodgerblue
-	else if (num == 12) {return new Atom(12, "Mg", 173, 0x008000);} // webgreen
-	else if (num == 14) {return new Atom(14, "Si", 210, 0xdaa520);} // goldenrod
-	else if (num == 15) {return new Atom(15, "P", 180, 0xffa500);} // orange
-	else if (num == 16) {return new Atom(16, "S", 180, 0x9acd32);} // yellowgreen
-	else if (num == 17) {return new Atom(17, "Cl", 175, 0x00ff00);} // green
-	else if (num == 19) {return new Atom(19, "K", 275, 0xff1493);} // deeppink
-	else if (num == 35) {return new Atom(35, "Br", 185, 0xcd853f);} // peru
-	else if (num == 53) {return new Atom(53, "I", 198, 0xee82ee);} // violet
+	if (num === 1) {return new Atom(1, "H", 120, 0xffffff);} // white
+	else if (num === 3) {return new Atom(3, "Li", 182, 0xff4500);} // orangered
+	else if (num === 6) {return new Atom(6, "C", 170, 0x808080);} // webgray
+	else if (num === 7) {return new Atom(7, "N", 155, 0x0000ff);} // blue
+	else if (num === 8) {return new Atom(8, "O", 152, 0xff0000);} // red
+	else if (num === 9) {return new Atom(9, "F", 147, 0xff00ff);} // magenta
+	else if (num === 11) {return new Atom(11, "Na", 227, 0x1e90ff);} // dodgerblue
+	else if (num === 12) {return new Atom(12, "Mg", 173, 0x008000);} // webgreen
+	else if (num === 14) {return new Atom(14, "Si", 210, 0xdaa520);} // goldenrod
+	else if (num === 15) {return new Atom(15, "P", 180, 0xffa500);} // orange
+	else if (num === 16) {return new Atom(16, "S", 180, 0x9acd32);} // yellowgreen
+	else if (num === 17) {return new Atom(17, "Cl", 175, 0x00ff00);} // green
+	else if (num === 19) {return new Atom(19, "K", 275, 0xff1493);} // deeppink
+	else if (num === 35) {return new Atom(35, "Br", 185, 0xcd853f);} // peru
+	else if (num === 53) {return new Atom(53, "I", 198, 0xee82ee);} // violet
 	else {return new Atom(0, "Dummy", 100, 0x00ffff);} // cyan
 }
 

@@ -39,7 +39,7 @@ const initWebGL = (canvas) => {
 const getJSON = (url, callback) => {
 	let xhr = new XMLHttpRequest();
 	
-	xhr.timeout = 20000;
+	xhr.timeout = 60000;
 	xhr.open('GET', url, true);
 	xhr.responseType = 'json';
 	// функция, вызывающаяся при ответе сервера на запрос
@@ -47,7 +47,7 @@ const getJSON = (url, callback) => {
 		
 		let status = xhr.status;
 		
-		if (status == 200) {
+		if (status === 200) {
 			callback(null, xhr.response);
 		} else {
 			callback(status);
@@ -85,6 +85,5 @@ const resetWindow = () => {
 	while (scene.children.length > 0) { 
 		scene.remove(scene.children[0]); 
 	}
-	document.getElementById("searchbox").value = "";
 	status.innerHTML = "STATUS: WAITING FOR INIT";
 }

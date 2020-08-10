@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>Molecula</title>
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body onload = "start()">
-    <form>
+    <form id="menu">
 		<!-- окно для ввода формулы/названия молекулы -->
-        <input type="text" id="searchbox" border="5" placeholder="Type here..."
+        <input type="text" id="searchbox" placeholder="Type here..."
 			style="height:2%; width:20%; position:fixed; top:4%; left:39%;">
-		<button type="text" id="sumbitSearch" border="5"
+		<button type="button" id="submitSearch"
 			style="height:2.35%; width:6%; position:fixed; top:4%; left:60%;"
-			onclick="getMolecula(); return false;"> Search </button>
-		<button type="button" id="reset" style="height:2.35%; width:6%; position:fixed; top:4%; left:32%;"
-			onclick="resetWindow();"> Clear all </button>
+			onclick="getMolecula();"> Search </button>
+		<button type="button"
+			style="height:2.35%; width:6%; position:fixed; top:4%; left:32%;"
+			onclick="resetWindow();"> Reset all </button>
 
 	    <!-- кнопки для переключения стилей отображения -->
 	    <button id="ball_stick" style="height:3%; width:12%; position:fixed; left:23%; top:9%;"
@@ -44,7 +45,8 @@
     <script type="text/javascript" src="code/ballStick.js"></script>
     <script type="text/javascript" src="code/spacefill.js"></script>
     <script type="text/javascript" src="code/wireframe.js"></script>
-
+	<script type="text/javascript" src="code/camera.js"></script>
+	<script type="text/javascript" src="code/mouseControl.js"></script>
 
     <!-- скрипты three.js -->
     <script type="text/javascript" src="three.js-master/build/three.js"></script>
