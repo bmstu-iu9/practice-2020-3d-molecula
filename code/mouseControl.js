@@ -11,8 +11,8 @@ let onDocumentMouseMOVE = (event) => {
         deltaX = event.movementX;
         deltaY = event.movementY;
         if (deltaX || deltaY) {
-            moleculaX += deltaX * 0.01;
-            moleculaY += deltaY * 0.01;
+            moleculaY += deltaX * 0.01;
+            moleculaX += deltaY * 0.01;
         }
     }
 }
