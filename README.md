@@ -10,13 +10,16 @@
 ## Старт ##
 
 ```sh
+   sudo apt update
+   sudo apt install xdg-utils
    git clone https://github.com/bmstu-iu9/practice-2020-3d-molecula.git
+   cd practice-2020-3d-molecula
    xdg-open window.html
 ```
 ## Управление ##
 
 Введите в окно молекулу, используя Caps lock.
-Дождитесь оповещения об успешной загрузке файла в левом углу панели отображения.
+Дождитесь изменения статуса загрузки файла с сервера над панелью визуализации (STATUS: READY FOR MODE SELECTION).
 Переключайтесь между режимами, используя соответствующие кнопки.
 
 | Клавиша |      Движение         |
