@@ -42,6 +42,9 @@ const initThreeJS = () => {
 	document.addEventListener( 'mousedown', onDocumentMouseDOWN, false );
 	document.addEventListener( 'mousemove', onDocumentMouseMOVE, false );
 	document.addEventListener( 'mouseup', onDocumentMouseUP, false );
+
+	// режим по умолчанию
+	drawBallStick();
 }
 
 const clearObject = (object) => {

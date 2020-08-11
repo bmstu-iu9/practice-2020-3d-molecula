@@ -1,4 +1,4 @@
-const drawMoleculaStick = () => {
+const drawStick = () => {
 	// очистка сцены перед отрисовкой
 	clearObject(scene);
 	groupOfAtoms = new THREE.Group();

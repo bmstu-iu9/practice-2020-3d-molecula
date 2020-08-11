@@ -74,7 +74,6 @@ const getMolecula = () => {
 				status.innerHTML = "STATUS: PREPARING FOR RENDERING";
 				parseMolecula(jsonData);
 				initThreeJS();
-				console.log(molecula);
 			}
 		});
 	}
