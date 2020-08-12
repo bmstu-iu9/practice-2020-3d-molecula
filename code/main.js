@@ -64,7 +64,7 @@ const getMolecula = () => {
 	if (text) {
 		current_molecula = text;
 		//создание ссылки
-		let link = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/fastformula/" + current_molecula + "/JSON?record_type=3d";
+		let link = "https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/" + current_molecula + "/JSON?record_type=3d";
 
 		getJSON(link, function(error, data) {
 			if (error != null) {
