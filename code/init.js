@@ -1,4 +1,4 @@
-let scene, camera, renderer, width, height, radiusOfBoundCylinder = 0.1, groupOfAtoms;
+let scene, camera, renderer, width, height, radiusOfBoundCylinder = 0.1, groupOfAtoms, light;
 
 
 // система координат three.js отличается от СК, в которой заданы исходные данные

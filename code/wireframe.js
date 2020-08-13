@@ -33,7 +33,7 @@ const drawWireframe = () => {
       //Первая половина соединения
       let geometry1 = new THREE.CylinderGeometry(radiusOfBoundCylinder/50, radiusOfBoundCylinder/50,
                           cylinderHeight / 2, 30);
-      let material1 = new THREE.MeshBasicMaterial({color: startAtom.atom.color});
+      let material1 = new THREE.MeshPhongMaterial({color: startAtom.atom.color});
      	let cylinder1 = new THREE.Mesh(geometry1, material1);
      	cylinder1.position.set(startAtom.coords[1] + x / 4, startAtom.coords[2] + y / 4, startAtom.coords[0] + z / 4);
      	cylinder1.quaternion.setFromUnitVectors(axis, direction.clone().normalize());
@@ -43,7 +43,7 @@ const drawWireframe = () => {
       //Вторая половина соединения
       let geometry2 = new THREE.CylinderGeometry(radiusOfBoundCylinder/50, radiusOfBoundCylinder/50,
     												   cylinderHeight / 2, 30);
-    	let material2 = new THREE.MeshBasicMaterial({color: finishAtom.atom.color});
+    	let material2 = new THREE.MeshPhongMaterial({color: finishAtom.atom.color});
     	let cylinder2 = new THREE.Mesh(geometry2, material2);
   		cylinder2.position.set(startAtom.coords[1] + x * 0.75, startAtom.coords[2] + y * 0.75,
   							   startAtom.coords[0] + z * 0.75);
@@ -56,7 +56,7 @@ const drawWireframe = () => {
       //Первая половина соединения
       let geometry1 = new THREE.CylinderGeometry(radiusOfBoundCylinder/70, radiusOfBoundCylinder/70,
                          cylinderHeight / 2, 30);
-      let material1 = new THREE.MeshBasicMaterial({color: startAtom.atom.color});
+      let material1 = new THREE.MeshPhongMaterial({color: startAtom.atom.color});
     	let cylinder1 = new THREE.Mesh(geometry1, material1);
       let cylinder11 = new THREE.Mesh(geometry1, material1);
     	cylinder1.position.set(startAtom.coords[1] + (x / 4), startAtom.coords[2] + (y / 4) + 0.01, startAtom.coords[0] + (z / 4));
@@ -71,7 +71,7 @@ const drawWireframe = () => {
       //Вторая половина соединения
       let geometry2 = new THREE.CylinderGeometry(radiusOfBoundCylinder/70, radiusOfBoundCylinder/70,
     											   cylinderHeight / 2, 30);
-    	let material2 = new THREE.MeshBasicMaterial({color: finishAtom.atom.color});
+    	let material2 = new THREE.MeshPhongMaterial({color: finishAtom.atom.color});
     	let cylinder2 = new THREE.Mesh(geometry2, material2);
       let cylinder22 = new THREE.Mesh(geometry2, material2);
     	cylinder2.position.set(startAtom.coords[1] + x * 0.75, startAtom.coords[2] + (y * 0.75) + 0.01,
@@ -90,7 +90,7 @@ const drawWireframe = () => {
 			//Первая половина соединения
 			let geometry1 = new THREE.CylinderGeometry(radiusOfBoundCylinder/70, radiusOfBoundCylinder/70,
 											 cylinderHeight / 2, 30);
-			let material1 = new THREE.MeshBasicMaterial({color: startAtom.atom.color});
+			let material1 = new THREE.MeshPhongMaterial({color: startAtom.atom.color});
 			let cylinder1 = new THREE.Mesh(geometry1, material1);
 			let cylinder11 = new THREE.Mesh(geometry1, material1);
 			let cylinder111 = new THREE.Mesh(geometry1, material1);
@@ -109,7 +109,7 @@ const drawWireframe = () => {
 				//Вторая половина соединения
 			let geometry2 = new THREE.CylinderGeometry(radiusOfBoundCylinder/70, radiusOfBoundCylinder/70,
 													 cylinderHeight / 2, 30);
-			let material2 = new THREE.MeshBasicMaterial({color: finishAtom.atom.color});
+			let material2 = new THREE.MeshPhongMaterial({color: finishAtom.atom.color});
 			let cylinder2 = new THREE.Mesh(geometry2, material2);
 			let cylinder22 = new THREE.Mesh(geometry2, material2);
 			let cylinder222 = new THREE.Mesh(geometry2, material2);
@@ -134,7 +134,7 @@ const drawWireframe = () => {
   //Отрисовка атомов
     for (let i = 0; i < molecula.atoms.length; i++){
 	    let sphereGeom = new THREE.SphereGeometry(molecula.atoms[i].atom.radius/7000, 30, 30);
-	    let sphereMat = new THREE.MeshBasicMaterial({color: molecula.atoms[i].atom.color});
+	    let sphereMat = new THREE.MeshPhongMaterial({color: molecula.atoms[i].atom.color});
 	    let sphere = new THREE.Mesh(sphereGeom, sphereMat);
 	    sphere.position.set(molecula.atoms[i].coords[1], molecula.atoms[i].coords[2], molecula.atoms[i].coords[0]);
 	    // scene.add(sphere);
@@ -145,4 +145,9 @@ const drawWireframe = () => {
 	camera.position.z = maxZ + 2;
 	// исправление бага с размытосью первоначальной отрисовки молекулы
 	window.innerHeight += 1;
+
+	// освещение (позади наблюдателя точечный источник света)
+	light = new THREE.PointLight(0xffffff, 3, 0, 2);
+	light.position.set(0, 0.5, 10);
+	scene.add(light);
 }

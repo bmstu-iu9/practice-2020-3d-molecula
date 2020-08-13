@@ -15,7 +15,7 @@ const drawSpacefill = () => {
 		}
 		
 	    let sphereGeom = new THREE.SphereGeometry(currentAtom.atom.radius / 100, 100, 100);
-	    let sphereMat = new THREE.MeshBasicMaterial({color: currentAtom.atom.color});
+	    let sphereMat = new THREE.MeshPhongMaterial({color: currentAtom.atom.color});
 	    let sphere = new THREE.Mesh(sphereGeom, sphereMat);
 	    sphere.position.set(currentAtom.coords[1], currentAtom.coords[2], currentAtom.coords[0]);
 	    // scene.add(sphere);
@@ -26,4 +26,9 @@ const drawSpacefill = () => {
 	camera.position.z = maxZ + 4;
 	// исправление бага с размытосью первоначальной отрисовки молекулы
 	window.innerHeight += 1;
+
+	// освещение (позади наблюдателя точечный источник света)
+	light = new THREE.PointLight(0xffffff, 1, 0, 2);
+	light.position.set(0, 0.5, 10);
+	scene.add(light);
 }

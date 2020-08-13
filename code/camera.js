@@ -20,26 +20,32 @@ const initCamera = () => {
             // w
             case 87:
                 camera.translateOnAxis(zAxis, -delta);
+                light.translateOnAxis(zAxis, -delta);
                 break;
             // s
             case 83:
                 camera.translateOnAxis(zAxis, delta);
+                light.translateOnAxis(zAxis, delta);
                 break;
             // a
             case 65:
                 camera.translateOnAxis(xAxis, -delta);
+                light.translateOnAxis(xAxis, -delta);
                 break;
             // d
             case 68:
                 camera.translateOnAxis(xAxis, delta);
+                light.translateOnAxis(xAxis, delta);
                 break;
             // q
             case 81:
                 camera.translateOnAxis(yAxis, -delta);
+                light.translateOnAxis(yAxis, -delta);
                 break;
             // e
             case 69:
                 camera.translateOnAxis(yAxis, delta);
+                light.translateOnAxis(yAxis, delta);
                 break;
 
             // z
