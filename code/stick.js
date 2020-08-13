@@ -32,7 +32,7 @@ const drawStick = () => {
 		// создание первой половины цилиндра (так как разные половинки разных цветов (по цвету атома, к которому они примыкают))
 		let geometry1 = new THREE.CylinderGeometry(radiusOfBoundCylinder, radiusOfBoundCylinder, 
 												   cylinderHeight / 2, 30);
-		let material1 = new THREE.MeshBasicMaterial({color: startAtom.atom.color});
+		let material1 = new THREE.MeshPhongMaterial({color: startAtom.atom.color});
 		let cylinder1 = new THREE.Mesh(geometry1, material1);
 		cylinder1.position.set(startAtom.coords[1] + x / 4, startAtom.coords[2] + y / 4, startAtom.coords[0] + z / 4);
 		cylinder1.quaternion.setFromUnitVectors(axis, direction.clone().normalize());
@@ -49,7 +49,7 @@ const drawStick = () => {
 		// вторая половинка
 		let geometry2 = new THREE.CylinderGeometry(radiusOfBoundCylinder, radiusOfBoundCylinder, 
 												   cylinderHeight / 2, 30);
-		let material2 = new THREE.MeshBasicMaterial({color: finishAtom.atom.color});
+		let material2 = new THREE.MeshPhongMaterial({color: finishAtom.atom.color});
 		let cylinder2 = new THREE.Mesh(geometry2, material2);
 		cylinder2.position.set(startAtom.coords[1] + x * 0.75, startAtom.coords[2] + y * 0.75, 
 							   startAtom.coords[0] + z * 0.75);
@@ -69,4 +69,9 @@ const drawStick = () => {
 	camera.position.z = maxZ + 2;
 	// исправление бага с размытосью первоначальной отрисовки молекулы
 	window.innerHeight += 1;
+
+	// освещение (позади наблюдателя точечный источник света)
+	light = new THREE.PointLight(0xffffff, 1, 0, 2);
+	light.position.set(0, 0.5, 10);
+	scene.add(light);
 }

@@ -80,10 +80,10 @@ const getMolecula = () => {
 }
 
 
-// "перезагрузка" страницы
-const resetWindow = () => {
-	while (scene.children.length > 0) {
-		scene.remove(scene.children[0]);
-	}
-	status.innerHTML = "STATUS: WAITING FOR INIT";
-}
+// // "перезагрузка" страницы
+// const resetWindow = () => {
+// 	while (scene.children.length > 0) {
+// 		scene.remove(scene.children[0]);
+// 	}
+// 	status.innerHTML = "STATUS: WAITING FOR INIT";
+// }
